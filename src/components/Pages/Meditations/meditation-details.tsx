@@ -29,25 +29,6 @@ export const MeditationDetails = ({meditationItem}: MeditationDetailsProps) => {
     return () => clearInterval(timer);
   }, [isPlaying, timeLeft]);
 
-  // Завантаження аудіо
-  useEffect(() => {
-    const audio = new Sound(
-      meditationItem?.music, // Замініть на шлях до вашого файлу
-      Sound.MAIN_BUNDLE,
-      error => {
-        if (error) {
-          console.error('Не вдалося завантажити аудіо', error);
-        } else {
-          setSound(audio);
-        }
-      },
-    );
-    return () => {
-      if (sound) {
-        sound.release(); // Очищення ресурсу
-      }
-    };
-  }, []);
 
   // Форматування часу
   const formatTime = (seconds: number) => {
