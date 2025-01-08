@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "title": "Welcome to Mercury Glow!",
+    "description": "Discover daily sparks of inspiration to brighten your day."
+  },
+  {
+    "id": 2,
+    "title": "Your Daily Spark",
+    "description": "Receive a short, uplifting message every morning to start your day with positivity."
+  },
+  {
+    "id": 3,
+    "title": "Stay Focused",
+    "description": "Complete one simple task each day and light up your Mercury Glow."
+  },
+  {
+    "id": 4,
+    "title": "Relax and Recharge",
+    "description": "Take a moment to unwind with soothing animations and calming sounds."
+  },
+  {
+    "id": 5,
+    "title": "Let’s Get Glowing!",
+    "description": "Start your journey toward a brighter, more inspired you."
+  }
+]
