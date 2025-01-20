@@ -25,7 +25,7 @@ export const ProfileScreen = () => {
       onBoards: [],
       nickName: '',
     });
-    navigation.navigate(ScreenName.Loader);
+    navigation.navigate(ScreenName.OnBoards);
   };
 
   return (

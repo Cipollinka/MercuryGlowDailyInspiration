@@ -59,7 +59,7 @@ export const OnBoardMain = () => {
     <View style={styles.wrapper}>
       <ImageBackground
         style={styles.imageBg}
-        source={require('../../assets/images/on_board_background_image.png')}>
+        source={require('../../assets/images/bg.png')}>
         <View style={styles.container}>
           <SafeAreaView style={styles.content_block}>
             {currentContent < OnBoardData.length ? (

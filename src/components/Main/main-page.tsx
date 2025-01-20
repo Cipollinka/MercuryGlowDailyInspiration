@@ -60,9 +60,7 @@ export const Main = () => {
       <ImageBackground
         style={styles.imageBg}
         source={
-          page === 'meditations'
-            ? require('../../assets/images/meditations_screen.png')
-            : require('../../assets/images/background_image_home_page.png')
+          require('../../assets/images/bg.png')
         }>
         <View style={styles.container}>
           {renderPages()}
