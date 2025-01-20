@@ -159,7 +159,7 @@ export default function AppManagerChild({navigation, route}) {
           backHandlerButton();
         }}>
         <Image
-          source={require('./assets/_back.png')}
+          source={require('./assets/images/_back.png')}
           style={{width: 20, height: 20, resizeMode: 'contain'}}
         />
       </TouchableOpacity>
@@ -179,7 +179,7 @@ export default function AppManagerChild({navigation, route}) {
           webViewRef.current.reload();
         }}>
         <Image
-          source={require('./assets/_reload.png')}
+          source={require('./assets/images/_reload.png')}
           style={{width: '90%', height: '90%', resizeMode: 'contain'}}
         />
       </TouchableOpacity>
