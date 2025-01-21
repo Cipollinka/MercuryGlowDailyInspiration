@@ -19,7 +19,7 @@ import LoaderRoot from './LoaderRoot';
 export default function AppManager() {
   const viewLoader = <LoaderRoot />;
   const viewGame = <MainRoot />;
-  const appManagerStack = <AppManagerStack />;
+  const appManagerStack = link => <AppManagerStack dataLoad={link} />;
 
   const [isLoadingScreen, setLoadingScreen] = useState(true);
   const [isGameOpen, setGameOpen] = useState(true);
@@ -257,5 +257,13 @@ export default function AppManager() {
     }, 400);
   }, []);
 
-  return isLoadingScreen ? viewLoader : isGameOpen ? viewGame : appManagerStack;
+  function appManagerStackView() {
+    return appManagerStack(dataLoad.current);
+  }
+
+  return isLoadingScreen
+    ? viewLoader
+    : isGameOpen
+    ? viewGame
+    : appManagerStackView();
 }

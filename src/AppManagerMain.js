@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   Linking,
   SafeAreaView,
@@ -6,26 +6,15 @@ import {
   TouchableOpacity,
   View,
   Image,
-  Text,
   Alert,
 } from 'react-native';
 import WebView from 'react-native-webview';
 
-import Storage from './Storage';
 import LoadingAppManager from './LoadingAppManager';
-import {Link} from "@react-navigation/native";
 
-export default function AppManagerMain({navigation}) {
-  const [linkRefresh, setLinkRefresh] = useState('');
-
-  async function getSavedParams() {
-    await Storage.get('link').then(res => {
-      setLinkRefresh(res);
-    });
-  }
-  useEffect(() => {
-    getSavedParams();
-  }, []);
+export default function AppManagerMain({navigation, route}) {
+  const linkRefresh = route.params.data;
+  // console.log(linkRefresh);
 
   const webViewRef = useRef(null);
 
@@ -59,7 +48,7 @@ export default function AppManagerMain({navigation}) {
     'fb://',
   ];
 
-  const openURLInBrowser = async (url) => {
+  const openURLInBrowser = async url => {
     await Linking.openURL(url);
   };
 
@@ -88,7 +77,7 @@ export default function AppManagerMain({navigation}) {
 
   const onShouldStartLoadWithRequest = event => {
     let currentUrl = event.url;
-
+    // console.log(currentUrl);
     try {
       if (
         event.mainDocumentURL.includes('pay.skrill.com') ||
@@ -142,7 +131,7 @@ export default function AppManagerMain({navigation}) {
     setTimeout(() => setDoubleClick(false), 400);
   };
 
-  const [isInit, setInit] = React.useState(false);
+  const [isInit, setInit] = React.useState(true);
   const [isLoadingPage, setLoadingPage] = useState(true);
   const [isInvisibleLoader, setInvisibleLoader] = useState(false);
 
@@ -199,15 +188,16 @@ export default function AppManagerMain({navigation}) {
                 );
               }
             }}
-            // onOpenWindow={syntheticEvent => {
-            //   const {nativeEvent} = syntheticEvent;
-            //   const {targetUrl} = nativeEvent;
-            //   try {
-            //     if (Linking.canOpenURL(targetUrl)) {
-            //       navigation.navigate('child', {data: targetUrl});
-            //     }
-            //   } catch (error) {}
-            // }}
+            onOpenWindow={syntheticEvent => {
+              const {nativeEvent} = syntheticEvent;
+              const {targetUrl} = nativeEvent;
+              console.log(targetUrl);
+              try {
+                if (Linking.canOpenURL(targetUrl)) {
+                  navigation.navigate('child', {data: targetUrl});
+                }
+              } catch (error) {}
+            }}
             setSupportMultipleWindows={false}
             allowFileAccess={true}
             showsVerticalScrollIndicator={false}
@@ -215,7 +205,7 @@ export default function AppManagerMain({navigation}) {
             style={{flex: 1}}
             ref={webViewRef}
             userAgent={
-              'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.3'
+              'Mozilla/5.0 (iPhone; CPU iPhone OS 18_1_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1.1 Mobile/15E148 Safari/604.1'
             }
           />
         </SafeAreaView>
